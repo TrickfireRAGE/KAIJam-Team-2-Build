@@ -32,6 +32,8 @@ switch (room)
 			room = rm_end;
 		}
 		
+		// Main Game Logic
+		
 		break;
 	case(rm_end):
 		if (keyboard_check_pressed(vk_enter))

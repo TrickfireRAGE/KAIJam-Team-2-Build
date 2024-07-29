@@ -3,7 +3,9 @@
   "resourceVersion": "1.6",
   "name": "Team 2 - KAIJam",
   "resources": [
+    {"id":{"name":"obj_coreSound","path":"objects/obj_coreSound/obj_coreSound.yy",},"order":5,},
     {"id":{"name":"spr_gameLogo","path":"sprites/spr_gameLogo/spr_gameLogo.yy",},"order":4,},
+    {"id":{"name":"obj_monster","path":"objects/obj_monster/obj_monster.yy",},"order":4,},
     {"id":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},"order":1,},
     {"id":{"name":"spr_tfsLogo","path":"sprites/spr_tfsLogo/spr_tfsLogo.yy",},"order":3,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":3,},
@@ -13,7 +15,10 @@
     {"id":{"name":"obj_relic","path":"objects/obj_relic/obj_relic.yy",},"order":2,},
     {"id":{"name":"spr_relic","path":"sprites/spr_relic/spr_relic.yy",},"order":1,},
     {"id":{"name":"fnt_mainFont","path":"fonts/fnt_mainFont/fnt_mainFont.yy",},"order":0,},
+    {"id":{"name":"spr_waveMask2","path":"sprites/spr_waveMask2/spr_waveMask2.yy",},"order":6,},
     {"id":{"name":"obj_coreUI","path":"objects/obj_coreUI/obj_coreUI.yy",},"order":1,},
+    {"id":{"name":"obj_ship","path":"objects/obj_ship/obj_ship.yy",},"order":6,},
+    {"id":{"name":"spr_waveMask1","path":"sprites/spr_waveMask1/spr_waveMask1.yy",},"order":5,},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":0,},
   ],
   "Options": [
