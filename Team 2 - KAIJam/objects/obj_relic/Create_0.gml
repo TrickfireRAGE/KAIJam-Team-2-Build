@@ -3,7 +3,7 @@
 var _spriteNumber;
 var _imageNumber;
 
-sprite_index = scr_scrap;
+sprite_index = spr_relic;
 
 _spriteNumber = sprite_get_number(sprite_index);
 

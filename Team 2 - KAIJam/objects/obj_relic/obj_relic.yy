@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_scrap",
+  "name": "obj_relic",
   "spriteId": null,
   "solid": false,
   "visible": true,
