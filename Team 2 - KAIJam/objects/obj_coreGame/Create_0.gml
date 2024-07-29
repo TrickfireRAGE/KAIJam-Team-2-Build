@@ -22,3 +22,5 @@ internalCounter = 0;
 
 
 // Put more code in here
+
+global.test = 0;
