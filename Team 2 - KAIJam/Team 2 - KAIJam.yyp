@@ -16,9 +16,11 @@
     {"id":{"name":"spr_relic","path":"sprites/spr_relic/spr_relic.yy",},"order":1,},
     {"id":{"name":"fnt_mainFont","path":"fonts/fnt_mainFont/fnt_mainFont.yy",},"order":0,},
     {"id":{"name":"spr_waveMask2","path":"sprites/spr_waveMask2/spr_waveMask2.yy",},"order":6,},
+    {"id":{"name":"spr_monsterHead","path":"sprites/spr_monsterHead/spr_monsterHead.yy",},"order":7,},
     {"id":{"name":"obj_coreUI","path":"objects/obj_coreUI/obj_coreUI.yy",},"order":1,},
     {"id":{"name":"obj_ship","path":"objects/obj_ship/obj_ship.yy",},"order":6,},
     {"id":{"name":"spr_waveMask1","path":"sprites/spr_waveMask1/spr_waveMask1.yy",},"order":5,},
+    {"id":{"name":"spr_monsterBody","path":"sprites/spr_monsterBody/spr_monsterBody.yy",},"order":8,},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":0,},
   ],
   "Options": [
