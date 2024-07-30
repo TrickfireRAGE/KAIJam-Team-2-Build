@@ -33,7 +33,50 @@ switch (room)
 		
 		break;
 	case(rm_main):
-		//
+		// Using the masking (Partly used Tutorial and mixed in a lot of personal code to get animated look.
+		if (!surface_exists(maskingSurface))
+		{
+			maskingSurface = surface_create(room_width, room_height);
+		}
+		
+		surface_set_target(maskingSurface);
+		
+		aboveWaterLayerID = layer_get_id("TileSetTest");
+		aboveWaterLayer = layer_tilemap_get_id(aboveWaterLayerID);
+		
+		// Swap to tileset or something else once background assets are done.
+		draw_tilemap(aboveWaterLayer, 0, 0);
+		
+		var _xIncreaseMask = 600;
+		var _yPositionMask = 80;
+		var _maskLength = 600;
+		
+		var _spritesNeeded = (room_width / _maskLength) + 1; // The extra one is to account for the first sprite.
+		_spritesNeeded = ceil(_spritesNeeded);
+		
+		gpu_set_blendmode(bm_subtract);
+		draw_set_colour(c_black);
+		if (maskingTimer == 0)
+		{
+			maskingTimer = -600;
+		}
+		
+		for (var i = 0; i <= _spritesNeeded; i++)
+		{
+			draw_sprite(spr_waveMask1, 0, maskingTimer + (_xIncreaseMask * i), _yPositionMask);
+		}
+		maskingTimer += 1;
+			
+		gpu_set_blendmode(bm_normal);
+		
+		surface_reset_target();
+		
+		layer_set_visible(aboveWaterLayerID, 0);
+		draw_surface(maskingSurface, 0, 0);
+		
+		
+		
+		
 		break;
 	case(rm_end):
 		// Variables

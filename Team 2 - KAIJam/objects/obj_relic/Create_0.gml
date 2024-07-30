@@ -13,6 +13,8 @@ image_index = _imageNumber;
 
 relicValue = "NOT_SET";
 collisionPlayer = false; // Used to see if the player has collided with them.
+timerRegen = false; // Stays at false unless player dies.
+counter = 0; // here to give enough frames to destory relic
 
 var _yBeginning = 380;
 var _yScoring = y - _yBeginning;

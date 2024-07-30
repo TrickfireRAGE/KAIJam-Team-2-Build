@@ -2,7 +2,10 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_ship",
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_gameLogo",
+    "path": "sprites/spr_gameLogo/spr_gameLogo.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,

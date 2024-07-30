@@ -1,9 +1,9 @@
-// handle player movement, including smoothing diagonals
+// Handle player movement, including smoothing diagonals
 
 hInput = keyboard_check(vk_right) - keyboard_check(vk_left);
 vInput = keyboard_check(vk_down) - keyboard_check(vk_up);
 
-// Temp due to spd not existing?
+// Temp due to spd not existing (Needed for Debugging)
 spd = 5;
 
 if(hInput != 0 or vInput != 0){
@@ -15,11 +15,151 @@ if(hInput != 0 or vInput != 0){
 	y += moveY;
 }
 
+// Particle Basic Code (will need to be updated once movement is updated)
+// Uses just hInput for now.
 
+var _distance = sprite_width / 2;
+
+#region Particle Direction
+
+if (hInput > 0 and vInput > 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x - _distance, y - _distance, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (hInput > 0 and vInput < 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x - _distance, y + _distance, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (hInput < 0 and vInput > 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x + _distance, y - _distance, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (hInput < 0 and vInput < 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x + _distance, y + _distance, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (hInput > 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x - _distance, y, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (hInput < 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x + _distance, y, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (vInput < 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x, y + _distance, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+else if (vInput > 0)
+{
+	if (particleTimer <= 0)
+	{
+		part_particles_create(obj_particleSystem.particleSystem, 
+			x, y - _distance, 
+			obj_particleSystem.particleTypeBubbles, 
+			1);
+		particleTimer = particleTime;
+	}
+	particleTimer--;
+}
+
+#endregion
 
 // Camera Code
 
-// This section needs to be using either a coded viewport
-// or a pre-baked one, but it MUST have the player in the centre
-// Current built in one doesn't follow the player with it in the centre
-// Only moves when he hit the edge of the viewport.
+halfCameraWidth = camera_get_view_width(view_camera[0]) / 2;
+halfCameraHeight = camera_get_view_height(view_camera[0]) / 2;
+
+minimumCameraX = 0;
+minimumCameraY = 0;
+maximumCameraX = room_width - camera_get_view_width(view_camera[0]);
+maximumCameraY = room_height - camera_get_view_height(view_camera[0]);
+
+cameraX = x - halfCameraWidth;
+cameraY = y - halfCameraHeight;
+
+cameraX = clamp(cameraX, minimumCameraX, maximumCameraX);
+cameraY = clamp(cameraY, minimumCameraY, maximumCameraY);
+
+camera_set_view_pos(view_camera[0], 
+	cameraX, cameraY);
+
+
+// Outside of Room Code (Slow Down for Y when going above underwater)
+
+playerWidthHalf = (sprite_width / 2) - 5;
+
+var _ySurfaceLimit = 290; // See if we can do a physics based thing. 
+
+// X
+if (x > (room_width - playerWidthHalf))
+{
+	x = room_width - playerWidthHalf;
+}
+else if (x < playerWidthHalf)
+{
+	x = playerWidthHalf;
+}
+
+// Y (Needs to be more specialised due to the rising above sea)
+
+if (y < _ySurfaceLimit)
+{
+	y = _ySurfaceLimit;
+}

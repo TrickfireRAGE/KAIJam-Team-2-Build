@@ -2,13 +2,16 @@
 
 if (collisionPlayer == false)
 {
-	global.collectedRelicValue = relicValue;
-	global.relicInstanceID = instance_id;
-	global.playerRelicCollected = true;
-	image_alpha = 0; // To make it appear the object has been picked up
-	// PUT SOUND EFFECT HERE
+	if (global.playerRelicCollected == false)
+	{
+		global.collectedRelicValue = relicValue;
+		global.relicInstanceID = id;
+		global.playerRelicCollected = true;
+		image_alpha = 0; // To make it appear the object has been picked up
+		// PUT SOUND EFFECT HERE
 	
-	collisionPlayer = true;
+		collisionPlayer = true;
+	}
 }
 else if (collisionPlayer == true)
 {
