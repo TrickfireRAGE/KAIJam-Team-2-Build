@@ -18,4 +18,3 @@ else if (collisionPlayer == true)
 	// In case there needs to be more code here in the future.
 }
 
-

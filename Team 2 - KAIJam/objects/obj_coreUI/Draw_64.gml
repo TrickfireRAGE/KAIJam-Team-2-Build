@@ -70,7 +70,7 @@ switch(room)
 			
 			// Score Text UI (Recode this to work depending on what level they are at.
 			draw_text_transformed_colour(_xPosition, _yPosition,
-				_scoreString + string(score), _displayScaling,
+				_scoreString, _displayScaling,
 				_displayScaling, 0, _textColour,
 				_textColour, _textColour, _textColour,
 				_textAlpha);

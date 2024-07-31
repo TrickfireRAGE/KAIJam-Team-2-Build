@@ -5,6 +5,7 @@ particleSystem = part_system_create();
 particleTypeBubbles = part_type_create();
 
 // Variables
+// Bubble
 var _sizeMinimumBubble = 1;
 var _sizeMaximumBubble = 2;
 
@@ -14,6 +15,7 @@ var _lifeBubbleMaximum = 15;
 var _alphaBubble1 = 0.3;
 var _alphaBubble2 = 0.6;
 var _alphaBubble3 = 1;
+
 
 
 // Particle System for Bubble
@@ -26,4 +28,9 @@ part_type_life(particleTypeBubbles, _lifeBubbleMinimum,
 part_type_alpha3(particleTypeBubbles, _alphaBubble1,
 	_alphaBubble2, _alphaBubble3);
 // Put Colour here if needed
+
+
+
+
+
 

@@ -24,3 +24,4 @@ if (collisionPlayer == true && global.playerRelicCollected == false)
 }
 
 
+

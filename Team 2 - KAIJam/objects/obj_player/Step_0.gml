@@ -57,7 +57,7 @@ x += moveX;
 y += moveY;
 	
 // Particle Basic Code (will need to be updated once movement is updated)
-// Uses just hInput for now.
+// Uses all 8 directions
 
 var _distance = sprite_width / 2;
 
