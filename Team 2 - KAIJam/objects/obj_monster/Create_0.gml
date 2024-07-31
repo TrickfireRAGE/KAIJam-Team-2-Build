@@ -8,3 +8,8 @@ fpsAnimation = sprite_get_speed(spr_monsterBody);
 counterAnimation = 0; // Needed to change between frames.
 
 frameNumber = 0; // To know what frame we are on.
+
+spawnX = 2000;
+spawnY = 2000; 
+// This is just a placeholder.
+// 
