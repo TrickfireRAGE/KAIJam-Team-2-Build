@@ -2,14 +2,10 @@
 
 // Here needs to be all the core variables we will need for the monster.
 
-fpsAnimation = sprite_get_speed(spr_monsterBody);
-
-
-counterAnimation = 0; // Needed to change between frames.
-
-frameNumber = 0; // To know what frame we are on.
 
 spawnX = 2000;
 spawnY = 2000; 
 // This is just a placeholder.
-// 
+
+preXLocation = "NOT_SET";
+preYLocation = "NOT_SET";

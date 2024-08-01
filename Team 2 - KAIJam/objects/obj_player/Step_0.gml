@@ -4,7 +4,7 @@ hInput = keyboard_check(vk_right) - keyboard_check(vk_left);
 vInput = keyboard_check(vk_down) - keyboard_check(vk_up);
 
 // Temp due to spd not existing (Needed for Debugging)
-spd = 0.5;
+spd = 4; // Original 0.5
 spdFinal = 0;
 spdMax = 5;
 lastMoveX = 0;
@@ -198,7 +198,7 @@ else if (x < playerWidthHalf)
 	x = playerWidthHalf;
 }
 
-// Y (Needs to be more specialised due to the rising above sea)
+// Y
 
 if (y < _ySurfaceLimit)
 {

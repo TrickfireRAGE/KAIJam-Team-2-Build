@@ -1,15 +1,14 @@
 /// @description Randomly Changes Sprite
 
 var _spriteNumber;
-var _imageNumber;
 
 sprite_index = spr_relic;
 
 _spriteNumber = sprite_get_number(sprite_index);
 
-_imageNumber = irandom_range(0, _spriteNumber);
+imageNumber = irandom_range(0, _spriteNumber);
 
-image_index = _imageNumber;
+image_index = imageNumber;
 
 relicValue = "NOT_SET";
 collisionPlayer = false; // Used to see if the player has collided with them.

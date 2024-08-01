@@ -25,33 +25,17 @@ switch (global.scoreRelic) // To see how many relics have been collected
 
 // Variables
 
-var _cutoffY = 1000; 
+var _cutoffY = 4500; 
 var _spd = 1; // Have an adapting speed in future versions.
 
 if (obj_player.y < _cutoffY)
 {
-	//
+	path_start(pathMonsterIdle, _spd, path_action_continue, true);
 }
 else if (obj_player.y > _cutoffY)
 {
 	move_towards_point(obj_player.x, obj_player.y, _spd);
 }
 
-
-// ONLY HERE TO TEST VISUAL SIDE!
-/*hInput = keyboard_check(vk_right) - keyboard_check(vk_left);
-vInput = keyboard_check(vk_down) - keyboard_check(vk_up);
-
-// Temp due to spd not existing (Needed for Debugging)
-spd = 5;
-
-if(hInput != 0 or vInput != 0){
-	dir = point_direction(0,0,hInput,vInput);
-	moveX = lengthdir_x(spd, dir);
-	moveY = lengthdir_y(spd, dir);
-	
-	x += moveX;
-	y += moveY;
-}
 
 

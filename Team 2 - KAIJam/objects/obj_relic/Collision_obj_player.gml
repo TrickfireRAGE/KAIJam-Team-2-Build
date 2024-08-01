@@ -8,6 +8,7 @@ if (collisionPlayer == false)
 		global.relicInstanceID = id;
 		global.playerRelicCollected = true;
 		image_alpha = 0; // To make it appear the object has been picked up
+		sprite_index = noone;
 		// PUT SOUND EFFECT HERE
 	
 		collisionPlayer = true;
