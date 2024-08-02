@@ -25,6 +25,11 @@ global.scoreRelic = 0; // Used for the amount of relics collected
 global.relicInstanceID = "NOT_SET";
 global.collectedRelicValue = "NOT_SET";
 global.playerRelicCollected = false;
+global.playerRelicCollectedTunnel = false;
+monsterSpawned = false; // To prevent endless spawning of the Monster
+global.tunnelRelics = 0; // Used to get the monsters.
+global.totalRelics = "NOT_SET";
+global.amountTunnelRelics = "NOT_SET"; // In case more are added in future.
 
 
 

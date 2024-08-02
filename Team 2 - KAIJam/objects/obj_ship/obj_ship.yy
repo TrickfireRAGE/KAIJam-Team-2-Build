@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "obj_ship",
   "spriteId": {
-    "name": "spr_gameLogo",
-    "path": "sprites/spr_gameLogo/spr_gameLogo.yy",
+    "name": "spr_boat",
+    "path": "sprites/spr_boat/spr_boat.yy",
   },
   "solid": false,
   "visible": true,

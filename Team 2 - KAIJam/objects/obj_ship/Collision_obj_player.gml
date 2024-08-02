@@ -8,4 +8,9 @@ if (global.playerRelicCollected == true)
 	global.relicInstanceID = "NOT_SET";
 	global.collectedRelicValue = 0;
 	global.playerRelicCollected = false;
+	
+	if (global.playerRelicCollectedTunnel == true)
+	{
+		global.tunnelRelics += 1;
+	}
 }

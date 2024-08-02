@@ -30,12 +30,17 @@ var _spd = 1; // Have an adapting speed in future versions.
 
 if (obj_player.y < _cutoffY)
 {
-	path_start(pathMonsterIdle, _spd, path_action_continue, true);
+	if (path_index != pathMonsterIdle)
+	{
+		path_start(pathMonsterIdle, _spd, path_action_continue, true);
+	}
 }
 else if (obj_player.y > _cutoffY) // Doesn't work yet as it doesn't exit path
 {
+	path_end();
 	move_towards_point(obj_player.x, obj_player.y, _spd);
 }
+
 
 
 

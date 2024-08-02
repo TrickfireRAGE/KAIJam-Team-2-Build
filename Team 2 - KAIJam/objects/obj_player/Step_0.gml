@@ -92,7 +92,8 @@ if (xSpeed != 0 or ySpeed != 0)
 	{
 		if (_direction != preDirection)
 		{
-			_calculation -= _direction;
+			
+			_calculation = angle_difference(_direction, _calculation);
 			
 			if (_calculation == -45)
 			{
@@ -100,6 +101,16 @@ if (xSpeed != 0 or ySpeed != 0)
 				motion_add(direction, stepSpeed);
 			}
 			else if (_calculation == 45)
+			{
+				direction = _direction;
+				motion_add(direction, stepSpeed);
+			}
+			else if (_calculation == 90)
+			{
+				direction = _direction;
+				motion_add(direction, stepSpeed);
+			}
+			else if (_calculation == -90)
 			{
 				direction = _direction;
 				motion_add(direction, stepSpeed);
@@ -156,6 +167,34 @@ if (speed > maxSpeed)
 	speed = maxSpeed;
 }
 	
+	
+// Collision Code
+
+if (place_meeting(x, y, obj_solid) == true)
+{
+	var _speed = speed;
+	speed = 0;
+	switch(xSpeed)
+	{
+		case(1):
+			x -= _speed;
+			break;
+		case(-1):
+			x += _speed;
+			break;
+	}
+	switch (ySpeed)
+	{
+		case(1):
+			y -= _speed;
+			break;
+		case(-1):
+			y += _speed;
+			break;
+	}
+}
+	
+
 // Particle Basic Code (will need to be updated once movement is updated)
 // Uses all 8 directions
 

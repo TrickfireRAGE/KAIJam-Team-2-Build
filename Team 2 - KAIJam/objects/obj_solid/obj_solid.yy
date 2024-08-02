@@ -6,7 +6,7 @@
     "name": "spr_solid",
     "path": "sprites/spr_solid/spr_solid.yy",
   },
-  "solid": true,
+  "solid": false,
   "visible": false,
   "managed": true,
   "spriteMaskId": null,

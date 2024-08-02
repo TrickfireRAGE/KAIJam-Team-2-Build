@@ -4,7 +4,7 @@ particleTime = 3;
 
 particleTimer = particleTime;
 
-spawnX = 236;
+spawnX = 236; // Do an object for this
 spawnY = 326;
 
 maxSpeed = 5;

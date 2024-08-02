@@ -34,6 +34,13 @@ switch (room)
 		
 		// Main Game Logic
 		
+		if (global.tunnelRelics == 1 && monsterSpawned == false)
+		{
+			instance_create_layer(obj_monsterSpawn.x, obj_monsterSpawn.y,
+				"Instances", obj_monster);
+			monsterSpawned = true;
+		}
+		
 		break;
 	case(rm_end):
 		if (keyboard_check_pressed(vk_enter))

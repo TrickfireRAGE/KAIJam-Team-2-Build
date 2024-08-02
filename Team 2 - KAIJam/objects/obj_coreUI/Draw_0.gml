@@ -41,11 +41,15 @@ switch (room)
 		
 		surface_set_target(maskingSurface);
 		
-		aboveWaterLayerID = layer_get_id("TileSetTest");
-		aboveWaterLayer = layer_tilemap_get_id(aboveWaterLayerID);
+		aboveWaterLayerID = layer_get_id("surfaceLayerWater2");
+		aboveWaterLayer = layer_background_get_id(aboveWaterLayerID);
 		
 		// Swap to tileset or something else once background assets are done.
-		draw_tilemap(aboveWaterLayer, 0, 0);
+		//draw_sprite_tiled_ext(spr_surface2, 0, maskingTimer, 0, 1, 1, c_white, 1);
+		draw_clear_alpha(c_black, 0);
+		draw_sprite_ext(spr_surface1, 0, maskingTimer, 0, 1, 1, 0, c_white, 1);
+		
+		// Put in code to have this layer slowly move too!
 		
 		var _xIncreaseMask = 600;
 		var _yPositionMask = 80;
@@ -85,7 +89,7 @@ switch (room)
 		var _yPositionRelic = 150;
 		var _yPositionRestart = 350;
 		var _scoreString = "Score: " + string(score); // Temp
-		var _relicString = "Relics Collected: " + string(global.scoreRelic) + "/ ??"; // Put the actual amount as a variable.
+		var _relicString = "Relics Collected: " + string(global.scoreRelic) + " / " + string(global.totalRelics); // Put the actual amount as a variable.
 		var _restartString = "Press Enter To Restart Game";
 		var _colourText = c_white; // Temp
 		var _textScaleScore = 3;
