@@ -36,7 +36,7 @@ else if (x > preXLocation)
 }
 
 
-if (image_xscale != preImageScale) // To correct the angle if it switches
+if (image_xscale != preImageScale) // To correct the angle if it switches (Doesn't work)
 {
 	//image_angle += 180;
 }
@@ -45,6 +45,6 @@ else if (image_xscale == preImageScale)
 	// Code below might be good for lighting in future as well as player visuals
 	var _direction = point_direction(x, y, preXLocation, preYLocation);
 	var _difference = angle_difference(_direction, image_angle);
-	image_angle += _difference * 0.5;
+	image_angle += _difference * 0.5; // Tweak to get smoother.
 }
 

@@ -1,60 +1,100 @@
-// Handle player movement, including smoothing diagonals
+// Updated Player Movement
 
-hInput = keyboard_check(vk_right) - keyboard_check(vk_left);
-vInput = keyboard_check(vk_down) - keyboard_check(vk_up);
+leftInput = keyboard_check(vk_left) or keyboard_check(ord("A"));
+rightInput = keyboard_check(vk_right) or keyboard_check(ord("D"));
+upInput = keyboard_check(vk_up) or keyboard_check(ord("W"));
+downInput = keyboard_check(vk_down) or keyboard_check(ord("S"));
 
-// Temp due to spd not existing (Needed for Debugging)
-spd = 4; // Original 0.5
-spdFinal = 0;
-spdMax = 5;
-lastMoveX = 0;
-lastMoveY = 0;
-moveX = 0;
-moveY = 0;
+xSpeed = rightInput - leftInput;
+ySpeed = downInput - upInput;
 
-if(hInput != 0 or vInput != 0){
-	
-	if(lastMoveX != hInput){
-		lastMoveX = hInput;
-		spdFinal = 0;
-	}
-	
-	if(lastMoveY != vInput){
-		lastMoveY = vInput;
-		spdFinal = 0;
-	}
-	
-	if(spdFinal <= spdMax){
-		spdFinal += spd;
-	}
-	
-	
-	//dir = point_direction(0,0,hInput,vInput);
-	//moveX = lengthdir_x(spd, dir);
-	//moveY = lengthdir_y(spd, dir);
-	
+var _calculation = preDirection;
+
+if (xSpeed > 0 and ySpeed > 0)
+{
+	direction = 315;
 }
-else{
-	
-	if(spdFinal > 0){
-		spdFinal -= spd;
-	}
-	
+else if (xSpeed > 0 and ySpeed < 0)
+{
+	direction = 45;
 }
+else if (xSpeed < 0 and ySpeed > 0)
+{
+	direction = 225;
+}
+else if (xSpeed < 0 and ySpeed < 0)
+{
+	direction = 135;
+}
+else if (ySpeed > 0)
+{
+	direction = 270;
+}
+else if (ySpeed < 0)
+{
+	direction = 90;
 
-if(spdFinal < spd){
-	
-	spdFinal = 0;
-	lastMoveX = 0;
-	lastMoveY = 0;
-	
+}
+else if (xSpeed > 0)
+{
+	direction = 0;
+}
+else if (xSpeed < 0)
+{
+	direction = 180;
 }
 
-moveX = spdFinal * lastMoveX;
-moveY = spdFinal * lastMoveY;
 
-x += moveX;
-y += moveY;
+if (xSpeed != 0 or ySpeed != 0)
+{
+	if (direction != preDirection)
+	{
+		_calculation -= direction;
+		
+		if (_calculation >= -45 or 45)
+		{
+			motion_add(direction, stepSpeed);
+		}
+		else
+		{
+			if (speed == 0)
+			{
+				motion_add(direction, stepSpeed);
+			}
+			else
+			{
+				if (speed >= 0)
+				{
+					speed -= decSpeed;
+				}
+				else if (speed < 0)
+				{
+					speed = 0;
+				}
+			}
+		}
+	}
+	else if (direction == preDirection)
+	{
+		motion_add(direction, stepSpeed);
+	}
+}
+else
+{
+	if (speed > 0)
+	{
+		speed -= decSpeed;
+	}
+	else if (speed < 0)
+	{
+		speed = 0;
+	}
+}
+
+if (speed > maxSpeed)
+{
+	speed = maxSpeed;
+}
 	
 // Particle Basic Code (will need to be updated once movement is updated)
 // Uses all 8 directions
@@ -63,7 +103,7 @@ var _distance = sprite_width / 2;
 
 #region Particle Direction
 
-if (hInput > 0 and vInput > 0)
+if (xSpeed > 0 and ySpeed > 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -75,7 +115,7 @@ if (hInput > 0 and vInput > 0)
 	}
 	particleTimer--;
 }
-else if (hInput > 0 and vInput < 0)
+else if (xSpeed > 0 and ySpeed < 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -87,7 +127,7 @@ else if (hInput > 0 and vInput < 0)
 	}
 	particleTimer--;
 }
-else if (hInput < 0 and vInput > 0)
+else if (xSpeed < 0 and ySpeed > 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -99,7 +139,7 @@ else if (hInput < 0 and vInput > 0)
 	}
 	particleTimer--;
 }
-else if (hInput < 0 and vInput < 0)
+else if (xSpeed < 0 and ySpeed < 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -111,7 +151,7 @@ else if (hInput < 0 and vInput < 0)
 	}
 	particleTimer--;
 }
-else if (hInput > 0)
+else if (xSpeed > 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -123,7 +163,7 @@ else if (hInput > 0)
 	}
 	particleTimer--;
 }
-else if (hInput < 0)
+else if (xSpeed < 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -135,7 +175,7 @@ else if (hInput < 0)
 	}
 	particleTimer--;
 }
-else if (vInput < 0)
+else if (ySpeed < 0)
 {
 	if (particleTimer <= 0)
 	{
@@ -147,7 +187,7 @@ else if (vInput < 0)
 	}
 	particleTimer--;
 }
-else if (vInput > 0)
+else if (ySpeed > 0)
 {
 	if (particleTimer <= 0)
 	{
