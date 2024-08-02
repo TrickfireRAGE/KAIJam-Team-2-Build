@@ -162,9 +162,21 @@ else
 	}
 }
 
-if (speed > maxSpeed)
+if (y <= 300)
 {
-	speed = maxSpeed;
+	var _surfaceMaxSpeed = 0.5;
+	if (speed > _surfaceMaxSpeed)
+	{
+		speed = _surfaceMaxSpeed;
+	}
+
+}
+else 
+{
+	if (speed > maxSpeed)
+	{
+		speed = maxSpeed;
+	}
 }
 	
 	
@@ -202,103 +214,105 @@ var _distance = sprite_width / 2.5;
 
 #region Particle Direction
 
-if (xSpeed > 0 and ySpeed > 0)
+if (y > yParticleLimit)
 {
-	if (particleTimer <= 0)
+	if (xSpeed > 0 and ySpeed > 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x - _distance, y - _distance, 
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x - _distance, y - _distance, 
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (xSpeed > 0 and ySpeed < 0)
-{
-	if (particleTimer <= 0)
+	else if (xSpeed > 0 and ySpeed < 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x - _distance, y + _distance, 
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x - _distance, y + _distance, 
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (xSpeed < 0 and ySpeed > 0)
-{
-	if (particleTimer <= 0)
+	else if (xSpeed < 0 and ySpeed > 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x - _distance, y + _distance, // Swapped due to Image_xScale
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x - _distance, y + _distance, // Swapped due to Image_xScale
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (xSpeed < 0 and ySpeed < 0)
-{
-	if (particleTimer <= 0)
+	else if (xSpeed < 0 and ySpeed < 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x - _distance, y - _distance, // Swapped due to Image_xScale
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x - _distance, y - _distance, // Swapped due to Image_xScale
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (xSpeed > 0)
-{
-	if (particleTimer <= 0)
+	else if (xSpeed > 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x - _distance, y, 
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x - _distance, y, 
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (xSpeed < 0)
-{
-	if (particleTimer <= 0)
+	else if (xSpeed < 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x - _distance, y, // Swapped due to image_xscale
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x - _distance, y, // Swapped due to image_xscale
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (ySpeed < 0)
-{
-	if (particleTimer <= 0)
+	else if (ySpeed < 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x, y + _distance, 
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x, y + _distance, 
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
-}
-else if (ySpeed > 0)
-{
-	if (particleTimer <= 0)
+	else if (ySpeed > 0)
 	{
-		part_particles_create(obj_particleSystem.particleSystem, 
-			x, y - _distance, 
-			obj_particleSystem.particleTypeBubbles, 
-			1);
-		particleTimer = particleTime;
+		if (particleTimer <= 0)
+		{
+			part_particles_create(obj_particleSystem.particleSystem, 
+				x, y - _distance, 
+				obj_particleSystem.particleTypeBubbles, 
+				1);
+			particleTimer = particleTime;
+		}
+		particleTimer--;
 	}
-	particleTimer--;
 }
-
 #endregion
 
 // Camera Code
@@ -317,15 +331,36 @@ cameraY = y - halfCameraHeight;
 cameraX = clamp(cameraX, minimumCameraX, maximumCameraX);
 cameraY = clamp(cameraY, minimumCameraY, maximumCameraY);
 
-camera_set_view_pos(view_camera[0], 
-	cameraX, cameraY);
+if (y <= 250) // To get the Parallaxing to work
+{
+	camera_set_view_pos(view_camera[0], 
+		cameraX, cameraY);
+}
+else if (y <= 350)
+{
+	parallaxYCamera = y - 250;
+	cameraY = (y - halfCameraHeight) + parallaxYCamera;
+	camera_set_view_pos(view_camera[0], 
+		cameraX, cameraY);
+	
+}
+else if (y <= 450)
+{
+	var _yThingy = y - 350;
+	cameraY = (y - halfCameraHeight) + (parallaxYCamera - _yThingy);
+	camera_set_view_pos(view_camera[0], 
+		cameraX, cameraY);
+}
+else
+{
+	camera_set_view_pos(view_camera[0], 
+		cameraX, cameraY);
 
+}
 
 // Outside of Room Code (Slow Down for Y when going above underwater)
 
 playerWidthHalf = (sprite_width / 2) - 5;
-
-var _ySurfaceLimit = 290; // See if we can do a physics based thing. 
 
 // X
 if (x > (room_width - playerWidthHalf))
@@ -339,7 +374,7 @@ else if (x < playerWidthHalf)
 
 // Y
 
-if (y < _ySurfaceLimit)
+if (y < ySurfaceLimit)
 {
-	y = _ySurfaceLimit;
+	y = ySurfaceLimit;
 }

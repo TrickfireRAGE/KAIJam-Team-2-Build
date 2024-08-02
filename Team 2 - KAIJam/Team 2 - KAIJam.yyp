@@ -7,7 +7,6 @@
     {"id":{"name":"obj_solidCorner","path":"objects/obj_solidCorner/obj_solidCorner.yy",},"order":9,},
     {"id":{"name":"spr_surface2","path":"sprites/spr_surface2/spr_surface2.yy",},"order":1,},
     {"id":{"name":"spr_surface1","path":"sprites/spr_surface1/spr_surface1.yy",},"order":0,},
-    {"id":{"name":"obj_coreSound","path":"objects/obj_coreSound/obj_coreSound.yy",},"order":5,},
     {"id":{"name":"spr_oceanUnderWater1","path":"sprites/spr_oceanUnderWater1/spr_oceanUnderWater1.yy",},"order":0,},
     {"id":{"name":"spr_gameLogo","path":"sprites/spr_gameLogo/spr_gameLogo.yy",},"order":2,},
     {"id":{"name":"scr_andrewMovement","path":"scripts/scr_andrewMovement/scr_andrewMovement.yy",},"order":0,},

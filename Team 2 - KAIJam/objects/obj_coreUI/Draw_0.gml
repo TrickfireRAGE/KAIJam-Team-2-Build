@@ -44,19 +44,51 @@ switch (room)
 		aboveWaterLayerID = layer_get_id("surfaceLayerWater2");
 		aboveWaterLayer = layer_background_get_id(aboveWaterLayerID);
 		
-		// Swap to tileset or something else once background assets are done.
-		//draw_sprite_tiled_ext(spr_surface2, 0, maskingTimer, 0, 1, 1, c_white, 1);
-		draw_clear_alpha(c_black, 0);
-		draw_sprite_ext(spr_surface1, 0, maskingTimer, 0, 1, 1, 0, c_white, 1);
-		
-		// Put in code to have this layer slowly move too!
-		
 		var _xIncreaseMask = 600;
-		var _yPositionMask = 80;
+		var _yPositionMask = -40;
 		var _maskLength = 600;
+		
+		var _playerY = obj_player.y;
+		var _scalingYDeepBlue = 0.3;
+		var _scalingYLightBlue = 0.3;
+		if (_playerY <= 300)
+		{
+			_scalingYDeepBlue = 0.3;
+			_scalingYLightBlue = 0.3;
+			savedScaling = 0;
+		}
+		else if (_playerY <= 500)
+		{
+			var _scale = _playerY - 300;
+			savedY = _scale * 2;
+			_scale /= 300;
+			savedScaling = _scale;
+			_scalingYDeepBlue -= _scale;
+			_scalingYLightBlue -= _scale;
+		}
+		else
+		{
+			_scalingYDeepBlue -= savedScaling;
+			_scalingYLightBlue -= savedScaling;
+		}
+	
 		
 		var _spritesNeeded = (room_width / _maskLength) + 1; // The extra one is to account for the first sprite.
 		_spritesNeeded = ceil(_spritesNeeded);
+		
+		// Swap to tileset or something else once background assets are done.
+		//draw_sprite_tiled_ext(spr_surface2, 0, maskingTimer, 0, 1, 1, c_white, 1);
+		draw_clear_alpha(c_black, 0);
+		var _yLocation = 150;
+		for (var i = 0; i <= _spritesNeeded; i++)
+		{
+			draw_sprite_ext(spr_surface2, 0, maskingTimer + (_xIncreaseMask * i), _yLocation, 1, _scalingYLightBlue, 0, c_white, 1);
+			draw_sprite_ext(spr_surface1, 0, maskingTimer + (_xIncreaseMask * i), _yLocation, 1, _scalingYDeepBlue, 0, c_white, 1);
+		}
+		
+		
+		// Put in code to have this layer slowly move too!
+		
 		
 		gpu_set_blendmode(bm_subtract);
 		draw_set_colour(c_black);
@@ -67,9 +99,9 @@ switch (room)
 		
 		for (var i = 0; i <= _spritesNeeded; i++)
 		{
-			draw_sprite(spr_waveMask1, 0, maskingTimer + (_xIncreaseMask * i), _yPositionMask);
+			draw_sprite_ext(spr_waveMask1, 0, maskingTimer + (_xIncreaseMask * i), _yPositionMask - savedY, 1, 1, 0, c_white, 1);
 		}
-		maskingTimer += 1;
+		maskingTimer += 0.25;
 			
 		gpu_set_blendmode(bm_normal);
 		
