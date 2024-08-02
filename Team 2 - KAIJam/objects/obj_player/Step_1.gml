@@ -1,6 +1,13 @@
 /// @description To check direction before hand
 
-preDirection = direction;
+if (speed == 0 and decBool == true)
+{
+	decBool = false;
+}
+else
+{
+	preDirection = direction;
+}
 
 
 

@@ -9,74 +9,134 @@ xSpeed = rightInput - leftInput;
 ySpeed = downInput - upInput;
 
 var _calculation = preDirection;
+var _direction = "NOT_SET";
 
 if (xSpeed > 0 and ySpeed > 0)
 {
-	direction = 315;
+	if (decBool == false)
+	{
+		_direction = 315;
+	}
+	image_angle = 315;
+	image_xscale = 1;
 }
 else if (xSpeed > 0 and ySpeed < 0)
 {
-	direction = 45;
+	if (decBool == false)
+	{
+		_direction = 45;
+	}
+	image_angle = 45;
+	image_xscale = 1;
 }
 else if (xSpeed < 0 and ySpeed > 0)
 {
-	direction = 225;
+	if (decBool == false)
+	{
+		_direction = 225;
+	}
+	image_angle = 45;
+	image_xscale = -1;
 }
 else if (xSpeed < 0 and ySpeed < 0)
 {
-	direction = 135;
+	if (decBool == false)
+	{
+		_direction = 135;
+	}
+	image_angle = 315;
+	image_xscale = -1
 }
 else if (ySpeed > 0)
 {
-	direction = 270;
+	if (decBool == false)
+	{
+		_direction = 270;
+	}
+	image_angle = 270;
+	image_xscale = 1;
 }
 else if (ySpeed < 0)
 {
-	direction = 90;
+	if (decBool == false)
+	{
+		_direction = 90;
+	}
+	image_angle = 90;
+	image_xscale = 1;
 
 }
 else if (xSpeed > 0)
 {
-	direction = 0;
+	if (decBool == false)
+	{
+		_direction = 0;
+	}
+	image_angle = 0;
+	image_xscale = 1;
 }
 else if (xSpeed < 0)
 {
-	direction = 180;
+	if (decBool == false)
+	{
+		_direction = 180;
+	}
+	image_angle = 0;
+	image_xscale = -1;
 }
 
 
 if (xSpeed != 0 or ySpeed != 0)
 {
-	if (direction != preDirection)
+	if (decBool == false)
 	{
-		_calculation -= direction;
-		
-		if (_calculation >= -45 or 45)
+		if (_direction != preDirection)
 		{
-			motion_add(direction, stepSpeed);
-		}
-		else
-		{
-			if (speed == 0)
+			_calculation -= _direction;
+			
+			if (_calculation == -45)
 			{
+				direction = _direction;
+				motion_add(direction, stepSpeed);
+			}
+			else if (_calculation == 45)
+			{
+				direction = _direction;
 				motion_add(direction, stepSpeed);
 			}
 			else
 			{
-				if (speed >= 0)
+				if (speed == 0)
 				{
-					speed -= decSpeed;
+					direction = _direction;
+					motion_add(direction, stepSpeed);
 				}
-				else if (speed < 0)
+				else
 				{
-					speed = 0;
+					decBool = true; // To tell the game to do deceleration
+					if (speed < 0)
+					{
+						speed = 0;
+					}
 				}
 			}
 		}
+		else if (_direction == preDirection)
+		{
+			direction = _direction;
+			motion_add(direction, stepSpeed);
+		}
 	}
-	else if (direction == preDirection)
+	else if (decBool == true)
 	{
-		motion_add(direction, stepSpeed);
+		if (speed >= 0)
+		{
+			speed -= decSpeed;
+		}
+		else if (speed < 0)
+		{
+			speed = 0;
+		}
 	}
 }
 else
@@ -99,7 +159,7 @@ if (speed > maxSpeed)
 // Particle Basic Code (will need to be updated once movement is updated)
 // Uses all 8 directions
 
-var _distance = sprite_width / 2;
+var _distance = sprite_width / 2.5;
 
 #region Particle Direction
 
@@ -132,7 +192,7 @@ else if (xSpeed < 0 and ySpeed > 0)
 	if (particleTimer <= 0)
 	{
 		part_particles_create(obj_particleSystem.particleSystem, 
-			x + _distance, y - _distance, 
+			x - _distance, y + _distance, // Swapped due to Image_xScale
 			obj_particleSystem.particleTypeBubbles, 
 			1);
 		particleTimer = particleTime;
@@ -144,7 +204,7 @@ else if (xSpeed < 0 and ySpeed < 0)
 	if (particleTimer <= 0)
 	{
 		part_particles_create(obj_particleSystem.particleSystem, 
-			x + _distance, y + _distance, 
+			x - _distance, y - _distance, // Swapped due to Image_xScale
 			obj_particleSystem.particleTypeBubbles, 
 			1);
 		particleTimer = particleTime;
@@ -168,7 +228,7 @@ else if (xSpeed < 0)
 	if (particleTimer <= 0)
 	{
 		part_particles_create(obj_particleSystem.particleSystem, 
-			x + _distance, y, 
+			x - _distance, y, // Swapped due to image_xscale
 			obj_particleSystem.particleTypeBubbles, 
 			1);
 		particleTimer = particleTime;
