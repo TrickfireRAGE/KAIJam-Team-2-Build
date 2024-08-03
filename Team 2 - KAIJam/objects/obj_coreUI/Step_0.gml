@@ -6,6 +6,8 @@ switch (room)
 		
 		break;
 	case(rm_main):
+	
+		
 		
 		break;
 }
