@@ -5,6 +5,11 @@
 
 spawnX = obj_monsterSpawn.x;
 spawnY = obj_monsterSpawn.y; 
+
+//iniitialise the monster's state
+state = e_state.idle;
+
+
 // This is just a placeholder.
 
 preXLocation = x;
