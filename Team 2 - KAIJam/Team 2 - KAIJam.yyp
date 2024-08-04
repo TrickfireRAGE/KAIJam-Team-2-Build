@@ -17,6 +17,7 @@
     {"id":{"name":"spr_boatForth1","path":"sprites/spr_boatForth1/spr_boatForth1.yy",},"order":1,},
     {"id":{"name":"obj_monster","path":"objects/obj_monster/obj_monster.yy",},"order":4,},
     {"id":{"name":"rm_start","path":"rooms/rm_start/rm_start.yy",},"order":1,},
+    {"id":{"name":"Sprite36","path":"sprites/Sprite36/Sprite36.yy",},"order":2,},
     {"id":{"name":"spr_tfsLogo","path":"sprites/spr_tfsLogo/spr_tfsLogo.yy",},"order":1,},
     {"id":{"name":"spr_glowingRock1","path":"sprites/spr_glowingRock1/spr_glowingRock1.yy",},"order":9,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":3,},
@@ -29,19 +30,12 @@
     {"id":{"name":"rm_end","path":"rooms/rm_end/rm_end.yy",},"order":2,},
     {"id":{"name":"spr_surface7","path":"sprites/spr_surface7/spr_surface7.yy",},"order":6,},
     {"id":{"name":"obj_monsterSpawn","path":"objects/obj_monsterSpawn/obj_monsterSpawn.yy",},"order":10,},
-<<<<<<< Updated upstream
-    {"id":{"name":"spr_coral","path":"sprites/spr_coral/spr_coral.yy",},"order":8,},
     {"id":{"name":"obj_playerLight","path":"objects/obj_playerLight/obj_playerLight.yy",},"order":12,},
     {"id":{"name":"spr_boatWaves","path":"sprites/spr_boatWaves/spr_boatWaves.yy",},"order":3,},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":1,},
-    {"id":{"name":"Sprite36","path":"sprites/Sprite36/Sprite36.yy",},"order":2,},
-=======
     {"id":{"name":"spr_coral1","path":"sprites/spr_coral1/spr_coral1.yy",},"order":8,},
     {"id":{"name":"obj_glowingRock2","path":"objects/obj_glowingRock2/obj_glowingRock2.yy",},"order":15,},
-    {"id":{"name":"spr_boatWaves","path":"sprites/spr_boatWaves/spr_boatWaves.yy",},"order":3,},
-    {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":1,},
     {"id":{"name":"spr_tunnelBackground","path":"sprites/spr_tunnelBackground/spr_tunnelBackground.yy",},"order":21,},
->>>>>>> Stashed changes
     {"id":{"name":"spr_surface4","path":"sprites/spr_surface4/spr_surface4.yy",},"order":3,},
     {"id":{"name":"spr_solid","path":"sprites/spr_solid/spr_solid.yy",},"order":0,},
     {"id":{"name":"snd_backgroundMusic","path":"sounds/snd_backgroundMusic/snd_backgroundMusic.yy",},"order":0,},

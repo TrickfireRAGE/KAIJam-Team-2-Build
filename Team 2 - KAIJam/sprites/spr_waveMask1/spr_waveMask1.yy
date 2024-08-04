@@ -13,7 +13,7 @@
   "bbox_left": 0,
   "bbox_right": 599,
   "bbox_top": 319,
-  "bbox_bottom": 599,
+  "bbox_bottom": 1999,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -88,7 +88,7 @@
       0,
     ],
     "resourceVersion": "1.0",
-    "loadedVersion": null,
+    "loadedVersion": {},
     "resourceType": "GMNineSliceData",
   },
   "parent": {

@@ -54,7 +54,7 @@ switch (room)
 			if (!audio_is_playing(snd_backgroundMusicTunnel))
 			{
 				audio_stop_sound(snd_backgroundMusic);
-				audio_play_sound(snd_backgroundMusicTunnel);
+				audio_play_sound(snd_backgroundMusicTunnel, 0, true);
 			}
 		}
 		

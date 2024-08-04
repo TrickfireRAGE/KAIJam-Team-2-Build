@@ -182,10 +182,45 @@ else
 	
 // Collision Code
 
-if (place_meeting(x, y, obj_solid or obj_rockParent) == true)
+if (place_meeting(x, y, obj_solid) == true)
 {
 	var _speed = speed;
 	speed = 0;
+	if (_speed == 0)
+	{
+		_speed = 1;
+	}
+	
+	switch(xSpeed)
+	{
+		case(1):
+			x -= _speed;
+			break;
+		case(-1):
+			x += _speed;
+			break;
+	}
+	switch (ySpeed)
+	{
+		case(1):
+			y -= _speed;
+			break;
+		case(-1):
+			y += _speed;
+			break;
+	}
+}
+
+if (place_meeting(x, y, obj_rockParent) == true)
+{
+	var _speed = speed;
+	speed = 0;
+	
+	if (_speed == 0)
+	{
+		_speed = 1;
+	}
+	
 	switch(xSpeed)
 	{
 		case(1):

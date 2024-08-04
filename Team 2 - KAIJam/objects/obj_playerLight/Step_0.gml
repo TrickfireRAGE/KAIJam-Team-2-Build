@@ -11,6 +11,10 @@ if(obj_player.y > 1000) and (obj_player.y < 4000){
 	var lightDepth = obj_player.y/5000;
 	image_alpha = clamp(lightDepth, 0, 0.8);
 }
+else if (obj_player.y >= 4000)
+{
+	image_alpha = 0.8;
+}
 
 obj_playerLight.x = obj_player.x;
 obj_playerLight.y = obj_player.y;
