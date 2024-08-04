@@ -28,7 +28,7 @@ switch (state) // To see how many relics have been collected
 	
 	case(e_state.chase_slow):{// This begins the slow movement of the monster
 		
-		var _spd = 4;
+		var _spd = 3;
 		
 		if (obj_player.y < _cutoffY)
 		{
@@ -56,7 +56,7 @@ switch (state) // To see how many relics have been collected
 	
 	case(e_state.chase_fast):{// This beings the fast movement of the monster
 		
-		var _spd = 6; 
+		var _spd = 5; 
 		
 		if (obj_player.y < _cutoffY)
 		{
@@ -71,7 +71,7 @@ switch (state) // To see how many relics have been collected
 	
 	case(e_state.retreat):{// the monster returns to it's spawn unless the player decides to fuck around
 		
-		var _spd = 4;
+		var _spd = 3;
 		
 		
 		if (distance_to_point(xstart, ystart) < 10){

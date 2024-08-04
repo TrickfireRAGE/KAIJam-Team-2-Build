@@ -34,7 +34,7 @@ switch (room)
 		
 		// Main Game Logic
 		
-		if (global.tunnelRelics == 1 && monsterSpawned == false)
+		if (global.scoreRelic == 1 && monsterSpawned == false) // Changed from tunnelRelic to save time.
 		{
 			instance_create_layer(obj_monsterSpawn.x, obj_monsterSpawn.y,
 				"Instances", obj_monster);
