@@ -164,7 +164,7 @@ else
 
 if (y <= 300)
 {
-	var _surfaceMaxSpeed = 0.5;
+	var _surfaceMaxSpeed = 1;
 	if (speed > _surfaceMaxSpeed)
 	{
 		speed = _surfaceMaxSpeed;
@@ -182,7 +182,7 @@ else
 	
 // Collision Code
 
-if (place_meeting(x, y, obj_solid) == true)
+if (place_meeting(x, y, obj_solid or obj_rockParent) == true)
 {
 	var _speed = speed;
 	speed = 0;

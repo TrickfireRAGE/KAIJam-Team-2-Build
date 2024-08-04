@@ -41,6 +41,23 @@ switch (room)
 			monsterSpawned = true;
 		}
 		
+		if (obj_player.y < 4500)
+		{
+			if (!audio_is_playing(snd_backgroundMusic))
+			{
+				audio_stop_sound(snd_backgroundMusicTunnel); // Figure out a better blend if time permits
+				audio_play_sound(snd_backgroundMusic, 0, true);
+			}
+		}
+		else if (obj_player.y >= 4500)
+		{
+			if (!audio_is_playing(snd_backgroundMusicTunnel))
+			{
+				audio_stop_sound(snd_backgroundMusic);
+				audio_play_sound(snd_backgroundMusicTunnel);
+			}
+		}
+		
 		break;
 	case(rm_end):
 		if (keyboard_check_pressed(vk_enter))
