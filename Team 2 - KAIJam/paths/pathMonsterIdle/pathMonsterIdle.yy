@@ -3,8 +3,8 @@
   "resourceVersion": "1.0",
   "name": "pathMonsterIdle",
   "kind": 1,
-  "precision": 4,
   "closed": true,
+  "precision": 4,
   "points": [
     {"speed":100.0,"x":3008.0,"y":9504.0,},
     {"speed":100.0,"x":2560.0,"y":9536.0,},

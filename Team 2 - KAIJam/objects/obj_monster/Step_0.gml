@@ -7,32 +7,39 @@ var _cutoffY = 4500;
 
 switch (state) // To see how many relics have been collected
 {
-	case(e_state.idle):{// the monster stays at it's spawn unless the player gets too close or collects a certain number of relics
+	case(e_state.idle):{// the monster randomly patrols arround it's spawn unless the player gets too close or collects a certain number of relics
 		
-		var _spd = 0;
+		var _spd = 2;
 		
-		//placeholder value for relics collected
-		if (global.scoreRelic > 3){
+		if (distance_to_point(xstart, ystart) > 120){//patrol distance is placeholder
+			direction = point_direction(x, y, xstart, ystart);	
+		}
+		else if (global.scoreRelic > 3){//placeholder value for relics collected
 			state = e_state.chase_slow;
 		}
 		else if (distance_to_object(obj_player) < 100){//distance value is placeholder
 			state = e_state.chase_slow;
+		}
+		else {
+			direction = random(360)	
 		}
 	}
 	break;
 	
 	case(e_state.chase_slow):{// This begins the slow movement of the monster
 		
-		var _spd = 3;
+		var _spd = 4;
 		
 		if (obj_player.y < _cutoffY)
 		{
 			state = e_state.retreat;
 		}
-		else if (obj_player.y > _cutoffY) // Doesn't work yet as it doesn't exit path
+		else if (obj_player.y > _cutoffY)
 		{
-			path_end();
-			move_towards_point(obj_player.x, obj_player.y, _spd);
+			path_delete(path);
+			path = path_add();
+			mp_grid_path(grid, path, x, y, obj_player.x, obj_player.y, true);
+			path_start(path, _spd, path_action_continue, false);
 		}
 		else if (global.scoreRelic > 5){
 			state = e_state.chase_fast;
@@ -47,7 +54,7 @@ switch (state) // To see how many relics have been collected
 	}
 	break;
 	
-	case(e_state.chase_fast):{
+	case(e_state.chase_fast):{// This beings the fast movement of the monster
 		
 		var _spd = 6; 
 		
@@ -62,13 +69,32 @@ switch (state) // To see how many relics have been collected
 	}
 	break;
 	
-	case(e_state.retreat):{
+	case(e_state.retreat):{// the monster returns to it's spawn unless the player decides to fuck around
 		
+		var _spd = 4;
+		
+		
+		if (distance_to_point(xstart, ystart) < 10){
+			path_end();
+			state = e_state.idle;	
+		}
+		else if (global.scoreRelic > 3) and (obj_player.y > _cutoffY){//placeholder value for relics collected
+			path_end();
+			state = e_state.chase_slow;
+		}
+		else if (distance_to_object(obj_player) < 100) and (obj_player.y > _cutoffY){//distance value is placeholder
+			path_end();
+			state = e_state.chase_slow;
+		}
+		else {// returns the monster to it's spawn location
+			path_delete(path);
+			path = path_add();
+			mp_grid_path(grid, path, x, y, xstart, ystart, true);
+			path_start(path, _spd, path_action_continue, false);
+		}
 	}
 	break;
 	// here would be more of the cases once the system works to have a gradual increase in speed.
-	default:
-		// Default will have the max speed as it would have been after enough Relics are collected
 }
 
 // Basic Moving AI Code
@@ -78,9 +104,6 @@ switch (state) // To see how many relics have been collected
 // When there is only one Relic left, then the Monster will venture outside into the glowing rocks
 // Could also have the monster teleport every 1/2 minutes near the player (Outside of players view)
 
-// Variables
-
-var _spd = 1; // Have an adapting speed in future versions.
 
 
 
